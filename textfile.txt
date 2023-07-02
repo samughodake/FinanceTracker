@@ -1,0 +1,29 @@
+food and dining
+transportation
+education
+bills and utilites
+debt and loans
+gift
+donation
+shopping
+travel
+entertainment
+insurance
+memberships
+other
+
+showing records between start date and end date
+showing bar chart or pie chart of the expenses filtered by category
+download tabular data of expenses to csv file
+
+from datetime import datetime
+sd = "2022-05-01"
+ed = "2022-05-30"
+start_date = datetime.strptime(sd, "%Y-%m-%d")
+end_date = datetime.strptime(ed, "%Y-%m-%d")
+
+dates = ["2022-05-10", "2022-05-11", "2022-05-12", "2022-05-22", "2022-05-30", "2022-06-10", "2022-07-10", "2022-08-10", "2022-09-10", "2022-01-10"]
+for d in dates:
+    cur_date = datetime.strptime(d, "%Y-%m-%d")
+    if(cur_date >= start_date and cur_date <= end_date):
+        print(cur_date)

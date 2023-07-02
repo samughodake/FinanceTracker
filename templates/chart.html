@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Expense Chart</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <div id="chart"></div>
+
+    <script>
+      var expenses = JSON.parse('{{ expenses|tojson }}');
+
+      var amounts = expenses.map(function(expense) {
+        return expense.amount;
+      });
+
+      var categories = expenses.map(function(expense) {
+        return expense.category;
+      });
+
+      var data = [{
+        values: amounts,
+        labels: categories,
+        type: 'pie'
+      }];
+
+      var layout = {
+        title: 'Expense Chart'
+      };
+
+      Plotly.newPlot('chart', data, layout);
+    </script>
+  </body>
+</html>

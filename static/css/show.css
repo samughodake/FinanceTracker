@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+position:absolute;
+  top: 10%;
+  background-color: white;
+  border-radius: 25px;
+  padding: 3px;
+}
+nav li {
+  list-style: none;
+  padding: 10px;
+  display: inline;
+}
+nav ul {
+  padding: 10px;
+}
+
+nav li a {
+  text-decoration: none;
+  color: black;
+  padding:5px ;
+  display: inline-block; 
+  position: relative;
+}
+nav li a:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 4px;
+  left: 50%;
+  position: absolute;
+  background:  hsla(18, 76%, 85%, 1);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+nav li a:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+
+.container {
+ 
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    90deg,
+    hsla(18, 76%, 85%, 1) 0%,
+    hsla(203, 69%, 84%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(18, 76%, 85%, 1) 0%,
+    hsla(203, 69%, 84%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(18, 76%, 85%, 1) 0%,
+    hsla(203, 69%, 84%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#f6cfbe", endColorstr="#b9dcf2", GradientType=1 );
+}
+.form .title-text {
+  display: flex;
+  width: 200%;
+  margin-bottom: 7%;
+}
+.form .title-text .title {
+  width: 100%;
+  font-size: 35px;
+  font-weight: 400;
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  margin: 20px;
+  font-size: 19px;
+  background: #fff;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.form .field {
+  height: 50px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.form .field input {
+  height: 100%;
+  width: 54%;
+  border: 1px solid lightgray;
+  outline: none;
+  margin-left: 10px;
+  padding-left: 10px;
+  font-size: 17px;
+  border-radius: 5px;
+  border-bottom-width: 2px;
+  transition: all 0.4s ease;
+}
+form input[type="month"] {
+  height: 38px;
+  border: 1px solid grey;
+}
+form input[type="submit"],
+form input[type="reset"] {
+  background: #b993d6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #8ca6db,
+    #b993d6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #8ca6db,
+    #b993d6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 0px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin: 10px;
+  border-radius: 6px;
+  height: 50px;
+}
+.btns {
+  display: flex;
+  width: 100%;
+}
+.table {
+  margin-top: 35%;
+  margin-left: 50px;
+}
+.logout{
+  color: black;
+  text-decoration: none;
+}
+.message {
+  font-weight: 100;
+  color: #ea5753;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.download{
+  font-weight: 300;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 30px;
+  background-color: white;
+}
+
+.download a{
+  margin: 10px;  
+}

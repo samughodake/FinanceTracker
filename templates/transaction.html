@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Expenses</title>
+  <link rel="stylesheet" href="../static/css/style2.css" />
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li>
+        <a href="/"> Home</a>
+      </li>
+      <li>
+        <a href="/add-transaction">Add an Expense</a>
+      </li>
+      <li>
+        <a href="/show-monthly-expenses"> Show Monthly Expenses</a>
+      </li>
+      <li>
+        <a href="/show-daily-expenses"> Show Daily Expenses </a>
+      </li>
+      <li>
+        <a href="/show-all-expenses"> Show All Expenses </a>
+      </li>
+      <li>
+        <a href="/get-started">Logout </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="wrapper">
+    <h1 class="message">{{success_message}}</h1>
+    <div class="title-text">
+      <div class="title login">Add a new expense</div>
+    </div>
+
+    <div class="form-container">
+      <div class="form-inner">
+        <form action="/add-transaction" class="login" method="post">
+          <div class="field">
+            <input type="text" name="name" id="name" placeholder="Description" required />
+          </div>
+          <div class="field">
+            <input type="number" name="amount" id="amount" placeholder="Amount" required />
+          </div>
+          <div class="field">
+            <select name="category" id="category" aria-placeholder="Category" required>
+              <option value="">Select a Category</option>
+              <option value="food and dining">food and dining</option>
+              <option value="transportation">transportation</option>
+              <option value="education">education</option>
+              <option value="bills and utilites">bills and utilites</option>
+              <option value="rent">rent</option>
+              <option value="debt and loans">debt and loans</option>
+              <option value="gift">gift</option>
+              <option value="donation">donation</option>
+              <option value="shopping">shopping</option>
+              <option value="travel">travel</option>
+              <option value="entertainment">entertainment</option>
+              <option value="insurance">insurance</option>
+              <option value="memberships">memberships</option>
+              <option value="other">other</option>
+
+            </select>
+          </div>
+          <div class="field">
+            <input type="date" name="date" id="date" placeholder="Date" required />
+          </div>
+          <div class="field btns">
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

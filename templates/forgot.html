@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset the Password</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <a href="/get-started" class="back_btn" style="padding-bottom: 100px;"> <img src="https://img.icons8.com/ios/38/circled-left-2.png" alt="" ></a>
+    <div class="wrapper" style="margin-bottom: 150px;">
+      <h2 class="message">{{message}}</h2>
+      <div class="title-text">
+        <div class="title login">Reset Password</div>
+        
+      </div>
+
+      <div class="form-container">
+        <div class="form-inner">
+          <form action="/reset-password" class="login" method="post">
+            <div class="field">
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username"
+                required
+              />
+            </div>
+            <div class="field">
+              <input
+                type="password"
+                name="new_password"
+                id="new_password"
+                placeholder=" New Password"
+                required
+              />
+            </div>
+            <div class="field">
+              <input
+                type="password"
+                name="confirm_new_password"
+                id="confirm_new_password"
+                onchange="onChange()"
+                placeholder="Confirm New Password"
+                required
+              />
+            </div>
+           
+            <div class="field">
+              <input type="submit" value="Submit" id="Submit" name="Submit" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function onChange() {
+      const password = document.querySelector("input[name=new_password]");
+      console.log(password.value);
+      const confirm = document.querySelector(
+        "input[name=confirm_new_password]"
+      );
+      console.log(confirm.value);
+      if (confirm.value === password.value) {
+        confirm.setCustomValidity("");
+      } else {
+        confirm.setCustomValidity("Passwords do not match");
+      }
+    }
+  </script>
+</html>

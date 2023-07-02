@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit the Expense</title>
+    <link  href="{{ url_for('static', filename='css/style2.css') }}" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div class="wrapper">
+    
+      <div class="title-text">
+        <div class="title login">Edit the expense</div>
+      </div>
+      <div class="form-container">
+        <div class="form-inner">
+          <form action="/edit" class="login" method="post">
+            <div class="field">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Description"
+                value="{{data['name']}}"
+                required
+              />
+            </div>
+            <div class="field">
+              <input
+                type="number"
+                name="amount"
+                id="amount"
+                placeholder="Amount"
+                value="{{data['amount']}}"
+                required
+              />
+            </div>
+            <div class="field">
+              <select name="category" id="category" aria-placeholder="Category"
+              required>
+                <option value="">Select a Category</option>
+                <option value="food and dining">food and dining</option>
+                <option value="transportation">transportation</option>
+                <option value="education">education</option>
+                <option value="bills and utilites">bills and utilites</option>
+                <option value="debt and loans">debt and loans</option>
+                <option value="gift">gift</option>
+                <option value="donation">donation</option>
+                <option value="shopping">shopping</option>
+                <option value="travel">travel</option>
+                <option value="entertainment">entertainment</option>
+                <option value="insurance">insurance</option>
+                <option value="memberships">memberships</option>
+                <option value="other">other</option>
+              </select>
+            </div>
+            <div class="field">
+              <input
+                type="date"
+                name="date"
+                id="date"
+                placeholder="Date"
+                value="{{data['date']}}"
+                required
+              />
+            </div>
+            <div class="field btns">
+              <input type="submit" value="Submit" />
+              <input type="reset" value="Reset" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

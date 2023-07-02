@@ -1,0 +1,128 @@
+<!-- Show all the expenses between the start date and end date -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show Expenses</title>
+    <link href="{{ url_for('static', filename='css/show.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<style>
+    table th {
+        font-weight: bold;
+        font-size: 22px;
+        color: #476072;
+    }
+
+    table tr {
+        padding: 8px;
+        text-align: center;
+    }
+
+    table td {
+        font-size: 20px;
+    }
+
+    table tr td,
+    table tr th {
+        padding: 7px;
+    }
+
+    table td a {
+        color: black;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #986d8e;
+        border-radius: 10px;
+    }
+
+    .expense-head {
+        color: #476072;
+        padding: 12px;
+        font-weight: 400;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li>
+                    <a href="/"> Home </a>
+                </li>
+                <li>
+                    <a href="/add-transaction">Add an Expense </a>
+                </li>
+                <li>
+                    <a href="/show-monthly-expenses"> Show Monthly Expenses </a>
+                </li>
+                <li>
+                    <a href="/show-daily-expenses"> Show Daily Expenses </a>
+                </li>
+                <li>
+                    <a href="/show-all-expenses"> Show All Expenses </a>
+                  </li>
+                <li>
+                    <a href="/get-started" class="logout">Logout </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="form">
+            <form action="/show-all-expenses" class="show" method="post">
+                <h1 class="message">{{success_message}}</h1>
+                <div class="title-text">
+                    <div class="title login">Get your all expenses</div>
+                </div>
+                <div class="field">
+                    Enter start date:
+                    <input type="date" name="start_date" id="start_date" required />
+                </div>
+                <div class="field">
+                    Enter end date:
+                    <input type="date" name="end_date" id="end_date" required />
+                </div>
+
+                <div class="field btns">
+                    <input type="submit" value="Show" />
+                    <input type="reset" value="Reset" />
+                </div>
+            </form>
+        </div>
+
+        <div class="table">
+            <table>
+
+                <tr style="border-bottom: 1px solid grey">
+                    <th>{{date}}</th>
+                    <th>{{name}}</th>
+                    <th>{{amount}}</th>
+                    <th>{{category}}</th>
+                    <th>{{edit}}</th>
+                    <th>{{delete}}</th>
+                </tr>
+                <br />
+                {% for doc in all_expenses %} {% set data = doc.to_dict() %}
+                <tr style="border-bottom: 1px solid grey">
+                    <td>{{data["date"]}}</td>
+                    <td>{{data["name"]}}</td>
+                    <td>{{data["amount"]}}</td>
+                    <td>{{data["category"]}}</td>
+                    <td><a href="/edit/{{data['date']}}/{{doc.id}}" id="{{doc.id}}">Edit</a></td>
+                    <td><a href="/delete/{{data['date']}}/{{doc.id}}" id="{{doc.id}}">Delete</a></td>
+       
+                </tr>
+                <br />
+                {% endfor %}
+            </table>
+            <h3 class="download">Download in CSV file<a href="/download/{{expenses}}">Download</a></h3>
+            <h3 class="download">Visualize your expenses: <a href="/chart//{{expenses}}">Pie Chart</a></h3>
+        </div>
+    </div>
+</body>
+
+</html>

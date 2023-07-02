@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Signup</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+   
+      <a href="/" class="back_btn"> <img src="https://img.icons8.com/ios/38/circled-left-2.png" alt="" ></a>
+  
+    <div class="wrapper">
+     
+      <h2 class="message">{{message}}</h2>
+      <div class="title-text">
+        <div class="title login">Login Form</div>
+        <div class="title signup">Signup Form</div>
+      </div>
+
+      <div class="form-container">
+        <div class="slide-controls">
+          <input type="radio" name="slider" id="login" checked />
+          <input type="radio" name="slider" id="signup" />
+          <label for="login" class="slide login">Login</label>
+          <label for="signup" class="slide signup">Signup</label>
+          <div class="slide-tab"></div>
+        </div>
+        <div class="form-inner">
+          <form action="/get-started" class="login" method="post">
+            <div class="field">
+              <input
+                type="text"
+                name="username_login"
+                id="username_login"
+                placeholder="Username"
+                required
+              />
+            </div>
+            <div class="field">
+              <input
+                type="password"
+                name="password_login"
+                id="password_login"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div class="forgot_pass">
+              <a href="/reset-password">Forgot Password?</a>
+            </div>
+            <div class="field">
+              <input type="submit" value="Login" id="login" name="login" />
+            </div>
+            <div class="signup-link">
+              Not a member? <a href="#">Signup Now</a>
+            </div>
+          </form>
+          <form action="/get-started" class="signup" method="post">
+            <div class="field">
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username"
+                required
+              />
+            </div>
+            <div class="field">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                onchange="onChange()"
+                required
+              />
+            </div>
+            <div class="field">
+              <input
+                type="password"
+                name="confirmpass"
+                id="confirmpass"
+                onchange="onChange()"
+                placeholder="Confirm Password"
+                required
+              />
+            </div>
+            <div class="field">
+              <input type="submit" value="Sign Up" name="signup" id="signup" />
+            </div>
+            <div class="login-link">
+              Already a member? <a href="#">Login Now</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function onChange() {
+      const password = document.querySelector("input[name=password]");
+      console.log(password.value);
+      const confirm = document.querySelector("input[name=confirmpass]");
+      console.log(confirm.value);
+      if (confirm.value === password.value) {
+        confirm.setCustomValidity("");
+      } else {
+        confirm.setCustomValidity("Passwords do not match");
+      }
+    }
+    const loginForm = document.querySelector("form.login");
+    const signupForm = document.querySelector("form.signup");
+    const loginBtn = document.querySelector("label.login");
+    const signupBtn = document.querySelector("label.signup");
+    const signupLink = document.querySelector(".signup-link a");
+    const loginLink = document.querySelector(".login-link a");
+    const loginText = document.querySelector(".title-text .login");
+    const signupText = document.querySelector(".title-text .signup");
+    signupBtn.onclick = () => {
+      loginForm.style.marginLeft = "-50%";
+      loginText.style.marginLeft = "-50%";
+    };
+    loginBtn.onclick = () => {
+      loginForm.style.marginLeft = "0%";
+      loginText.style.marginLeft = "0%";
+    };
+    signupLink.onclick = () => {
+      signupBtn.onclick();
+    };
+    loginLink.onclick = () => {
+      loginBtn.onclick();
+    };
+  </script>
+</html>

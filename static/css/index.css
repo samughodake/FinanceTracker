@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  
+}
+.container{
+    background: linear-gradient(
+    90deg,
+    hsla(18, 76%, 85%, 1) 0%,
+    hsla(203, 69%, 84%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(18, 76%, 85%, 1) 0%,
+    hsla(203, 69%, 84%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(18, 76%, 85%, 1) 0%,
+    hsla(203, 69%, 84%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#f6cfbe", endColorstr="#b9dcf2", GradientType=1 );
+  height: 100vh;
+
+}
+.main {
+  display: flex;
+  width: 100%;
+}
+.heading{
+    background: hsla(339, 100%, 55%, 1);
+
+    background: linear-gradient(90deg, hsla(339, 100%, 55%, 1) 0%, hsla(197, 100%, 64%, 1) 100%);
+    
+    background: -moz-linear-gradient(90deg, hsla(339, 100%, 55%, 1) 0%, hsla(197, 100%, 64%, 1) 100%);
+    
+    background: -webkit-linear-gradient(90deg, hsla(339, 100%, 55%, 1) 0%, hsla(197, 100%, 64%, 1) 100%);
+    padding: 15px;
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    display: flex;
+}
+.heading img{
+    height: 48px;
+    width: 46px;
+    padding: 5px;
+}
+.main .content,
+.main .image {
+  width: 50%;
+}
+.main .image img {
+  width: 490px;
+  height: 450px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+.main .content{
+    margin: 13px;
+    margin-top: 200px;
+}
+.main .content p{
+    font-size: 19px;
+    line-height: 1.7;
+}
+.content button a{
+    color: #fff;
+    text-decoration: none;
+}
+.content button{
+    color: #fff;
+    text-decoration: none;
+    background: #b993d6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #8ca6db,
+    #b993d6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #8ca6db,
+    #b993d6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 0px;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+  margin-top: 30px;
+  border-radius: 6px;
+  height: 50px;
+ 
+}
+
+span{
+   
+background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+}
+.main .content h2{
+    margin-bottom: 15px;
+}
+.main .image{
+    margin-top: 50px;
+}
+button img{
+    height: 20px;
+    filter: invert(100%);
+}
