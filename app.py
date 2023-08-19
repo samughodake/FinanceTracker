@@ -15,10 +15,12 @@ import bcrypt
 import firebase_admin
 from firebase_admin import credentials, firestore
 from collections import defaultdict
-firebase_key_dict = os.path.join(os.path.dirname(
-    __file__), "etc\secrets\serviceAccountKey.json")
 
-# firebase_key_dict = os.path.join("/etc/secrets/serviceAccountKey.json")
+# firebase_key_dict = os.path.join(os.path.dirname(
+#     __file__), "etc\secrets\serviceAccountKey.json")
+
+firebase_key_dict = os.path.join("/etc/secrets/serviceAccountKey.json")
+
 cred = credentials.Certificate(firebase_key_dict)
 firebase_admin.initialize_app(cred)
 
@@ -53,7 +55,7 @@ def show_chart(expenses):
 
     for expense in expenses_list:
         category = expense["category"]
-        amount = expense["amount"]
+        amount = int(expense["amount"])
         category_amounts[category] += amount
 
     chart_data = [
@@ -71,7 +73,7 @@ def download(expenses):
     if(session.get("current_user", None) == None):
         print("session deleted")
         return redirect("/get-started")
-    
+      
     expenses = expenses.replace("'", '"')
 
     # Save the table data to a CSV file
@@ -84,8 +86,12 @@ def download(expenses):
 
         for row in docs_list:
             # Write each row of data
-            writer.writerow([row["date"], row["name"],
-                            row["amount"], row["category"]])
+            writer.writerow([row["date"], row["name"], row["amount"], row["category"]])
+
+    # # Replace with the path to your local file
+    return send_file(
+        os.path.join(os.path.dirname(__file__), "expenses.csv"), as_attachment=True
+    )
 
     # # Replace with the path to your local file
     return send_file(
@@ -254,6 +260,7 @@ def editExpense():
     if(session.get("current_user", None) == None):
         print("session deleted")
         return redirect("/get-started")
+
     referer = request.headers.get("Referer")
     print(referer)
 
@@ -307,7 +314,7 @@ def reset_password():
         # get the username, new password
         username = request.form["username"]
         new_password = request.form["new_password"]
-
+        
         # first check if the same user exists in the database or not
         doc_ref = db.collection("users").where("username", "==", username)
         users = doc_ref.get()
@@ -322,7 +329,6 @@ def reset_password():
         # if the username is correct, update the password and display the success message
         if flag == 1:
             # update the password in the firestore database and display the message
-
 
             # grab the document id
             global doc_id
@@ -345,7 +351,8 @@ def reset_password():
 
             # ender the page
             message = "Password updated successfully!!!"
-            return render_template("start.html", message=message)
+            return render_template("forgot.html", message=message)
+
         else:
             # the user does not exist
             # display the appropriate message and render the page
@@ -586,26 +593,12 @@ def getStarted():
             # show them the page to add expenses
             return redirect("/add-transaction")
     else:
+        current_user = session.get("current_user", None)
+        print("current user: ",current_user)
+        if(session.get("current_user", None) != None):
+            return redirect("/add-transaction")
         return render_template("start.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True)
     sess.init_app(app)
-
-
-# import os
-# from dotenv import load_dotenv
-# import json
-
-# load_dotenv()
-
-# firebase_key = os.environ.get("FIREBASE_KEY")
-
-# print(firebase_key)
-# if firebase_key is None:
-#     raise ValueError("FIREBASE_KEY environment variable is not set.")
-
-# firebase_key_dict = json.loads(firebase_key)
-# # cred = credentials.Certificate(firebase_key_dict)
-# # firebase_admin.initialize_app(cred)
